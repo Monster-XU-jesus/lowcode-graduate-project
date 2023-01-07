@@ -1,4 +1,5 @@
 <template>
+    <!-- 拖拽开始事件，可绑定于被拖拽元素上 -->
     <div class="component-list" @dragstart="handleDragStart">
         <div
             v-for="(item, index) in componentList"
@@ -24,9 +25,13 @@ export default {
     },
     methods: {
         handleDragStart(e) {
-            e.dataTransfer.setData('index', e.target.dataset.index)
+            console.log(e.target.dataset.hello);
+            e.dataTransfer.setData('index', e.target.dataset.index) // 传过去的是data-index绑定的值(根据index才知道应该生成什么组件)
         },
     },
+    mounted() {
+        // console.log(typeof(componentList[0].component));
+    }
 }
 </script>
 
