@@ -1,11 +1,43 @@
 <template>
     <div>
         <div class="toolbar">
-            <el-button @click="handleAceEditorChange">JSON</el-button>
-            <el-button @click="undo">撤消</el-button>
-            <el-button @click="redo">重做</el-button>
+            <!-- <el-button @click="handleAceEditorChange">JSON</el-button> -->
+            <!-- <img
+                src="@/assets/xzy.png"
+                alt=""
+                width="50"
+                height="50"
+            > -->
+            <!-- <span>基本操作：</span> -->
+            <div>
+            <el-tooltip
+                effect="dark"
+                content="撤消"
+                placement="bottom"
+            >
+                <el-button round plain @click="undo"><el-icon class="el-icon-back"></el-icon></el-button>
+            </el-tooltip>
+            <el-tooltip
+                effect="dark"
+                content="重做"
+                placement="bottom"
+            >
+                <el-button round plain @click="redo">
+                    <el-icon
+                        class="el-icon-right"
+                    ></el-icon>
+                </el-button>
+            </el-tooltip>
             <label for="input" class="insert">
-                插入图片
+                <el-tooltip
+                    effect="dark"
+                    content="上传图片"
+                    placement="bottom"
+                >
+                    <el-icon
+                        class="el-icon-picture-outline"
+                    ></el-icon>
+                </el-tooltip>
                 <input
                     id="input"
                     type="file"
@@ -13,31 +45,133 @@
                     @change="handleFileChange"
                 />
             </label>
+            
+            <el-tooltip
+                effect="dark"
+                content="预览"
+                placement="bottom"
+            >
+                <el-button
+                    round
+                    style="margin-left: 10px;"
+                    plain
+                    @click="preview(false)"
+                >
+                    <el-icon
+                        class="el-icon-full-screen"
+                    ></el-icon>
+                </el-button>
+            </el-tooltip>
+            <el-tooltip
+                effect="dark"
+                content="保存"
+                placement="bottom"
+            >
+                <el-button
+                    round
+                    style="margin-left: 10px;"
+                    plain
+                    @click="save"
+                >
+                    <el-icon
+                        class="el-icon-files"
+                    ></el-icon>
+                </el-button>
+            </el-tooltip>
+            </div>
 
-            <el-button style="margin-left: 10px;" @click="preview(false)">预览</el-button>
-            <el-button @click="save">保存</el-button>
-            <el-button @click="clearCanvas">清空画布</el-button>
-            <el-button :disabled="!areaData.components.length" @click="compose">组合</el-button>
+            <div class="canvas-config" >
+                <div class="canvas-config">
+                    <span>长：</span>
+                    <input v-model="canvasStyleData.width" style=" border: 1px solid #ccc;border-radius: 5px;height: 25px;width: 100px;">
+                    <span>宽：</span>
+                    <input v-model="canvasStyleData.height" style=" border: 1px solid #ccc;border-radius: 5px;height: 25px;width: 100px;">
+                </div>
+                <div class="canvas-config">
+                    <span>比例大小：</span>
+                    <input v-model="scale" style=" border: 1px solid #ccc;border-radius: 5px;height: 25px;" @input="handleScaleChange"> %
+                </div>
+            </div>
+
+            <div>
+            <el-tooltip
+                effect="dark"
+                content="清空画布"
+                placement="bottom"
+            >
+                <el-button
+                    round
+                    style="margin-left: 10px;"
+                    plain
+                    @click="clearCanvas"
+                >
+                    <el-icon
+                        class="el-icon-delete"
+                    ></el-icon>
+                </el-button>
+            </el-tooltip>
+
+            <el-button :disabled="!areaData.components.length" plain @click="compose">组合</el-button>
             <el-button
                 :disabled="!curComponent || curComponent.isLock || curComponent.component != 'Group'"
+                plain
                 @click="decompose"
             >
                 拆分
             </el-button>
 
-            <el-button :disabled="!curComponent || curComponent.isLock" @click="lock">锁定</el-button>
-            <el-button :disabled="!curComponent || !curComponent.isLock" @click="unlock">解锁</el-button>
-            <el-button @click="preview(true)">截图</el-button>
+            <el-button :disabled="!curComponent || curComponent.isLock" plain @click="lock">锁定</el-button>
+            <el-button :disabled="!curComponent || !curComponent.isLock" plain @click="unlock">解锁</el-button>
+            <el-tooltip
+                effect="dark"
+                content="截图"
+                placement="bottom"
+            >
+                <el-button
+                    round
+                    style="margin-left: 10px;"
+                    plain
+                    @click="preview(true)"
+                >
+                    <el-icon
+                        class="el-icon-camera"
+                    ></el-icon>
+                </el-button>
+            </el-tooltip>
 
-            <div class="canvas-config">
-                <span>画布大小</span>
-                <input v-model="canvasStyleData.width">
-                <span>*</span>
-                <input v-model="canvasStyleData.height">
-            </div>
-            <div class="canvas-config">
-                <span>画布比例</span>
-                <input v-model="scale" @input="handleScaleChange"> %
+            <el-popover
+                placement="bottom-start"
+                width="200"
+                trigger="hover"
+            >
+                <ul>
+                    <li>ctrl / command + c : 复制 </li>
+                    <br>
+                    <li>ctrl / command + v : 粘贴 </li>
+                    <br>
+                    <li>ctrl / command + x : 剪切 </li>
+                    <br>
+                    <li>ctrl / command + y : 重做 </li>
+                    <br>
+                    <li>ctrl / command + z : 撤销 </li>  
+                    <br>
+                    <li>ctrl / command + s : 保存 </li>  
+                    <br> 
+                    <li>ctrl / command + p : 预览 </li>  
+                    <br> 
+                    <li>ctrl / command + d : 删除 </li> 
+                    <br>
+                    <li>ctrl / command + e : 清空 </li>   
+                    <br> 
+                    <li>Backspace : 撤销 </li>  
+                    <br>
+                    <li>Delete : 撤销 </li>  
+                </ul>
+                <div slot="reference" class="shortcut">
+                    <span class="el-icon-question"></span>
+                    <span>快捷键</span>
+                </div>
+            </el-popover>
             </div>
         </div>
 
@@ -162,7 +296,6 @@ export default {
                         },
                     }
 
-                    // 根据画面比例修改组件样式比例 https://github.com/woai3c/visual-drag-demo/issues/91
                     changeComponentSizeWithScale(component)
 
                     this.$store.commit('addComponent', { component })
@@ -206,7 +339,35 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+img {
+    width: 230px;
+    height: 68px;
+    position: fixed;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.shortcut {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #606266;
+
+    span {
+        margin-left: 10px;
+    }
+}
+
+.shortcut:hover {
+    color: #409eff;
+    cursor: pointer;
+}
+
 .toolbar {
+    display: flex;
+    justify-content: space-between;
     padding: 15px 10px;
     white-space: nowrap;
     overflow-x: auto;
@@ -216,6 +377,7 @@ export default {
     .canvas-config {
         display: inline-block;
         margin-left: 10px;
+        margin-top: 2px;
         font-size: 14px;
         color: #606266;
 

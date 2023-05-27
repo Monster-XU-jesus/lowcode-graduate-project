@@ -47,7 +47,7 @@ export default {
                 const curComponentStyleKeys = Object.keys(this.curComponent.style)
                 return this.styleData.filter(item => curComponentStyleKeys.includes(item.key))
             }
-
+            
             return []
         },
         curComponent() {

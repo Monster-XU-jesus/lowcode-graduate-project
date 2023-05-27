@@ -100,13 +100,14 @@ const data = {
         setComponentData(state, componentData = []) {
             Vue.set(state, 'componentData', componentData)
         },
-
+        
         addComponent(state, { component, index }) {
             if (index !== undefined) {
                 state.componentData.splice(index, 0, component)
             } else {
                 state.componentData.push(component)
             }
+            console.log(state.componentData)
         },
 
         deleteComponent(state, index) {

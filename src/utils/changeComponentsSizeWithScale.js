@@ -18,7 +18,7 @@ export default function changeComponentsSizeWithScale(scale) {
     })
 
     store.commit('setComponentData', componentData)
-    // 更新画布数组后，需要重新设置当前组件，否则在改变比例后，直接拖动圆点改变组件大小不会生效 https://github.com/woai3c/visual-drag-demo/issues/74
+    // 更新画布数组后，需要重新设置当前组件，否则在改变比例后，直接拖动圆点改变组件大小不会生效 
     store.commit('setCurComponent', { component: componentData[store.state.curComponentIndex], index: store.state.curComponentIndex })
     store.commit('setCanvasStyle', {
         ...store.state.canvasStyleData,

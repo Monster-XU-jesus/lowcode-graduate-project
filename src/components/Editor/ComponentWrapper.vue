@@ -1,5 +1,5 @@
 <template>
-    <div @click="onClick" @mouseenter="onMouseEnter">
+    <div @click="onClick" @mouseenter="onMouseEnter" @keyup.space="onMouseSpace">
         <component
             :is="config.component"
             v-if="config.component.startsWith('SVG')"
@@ -59,6 +59,10 @@ export default {
 
         onMouseEnter() {
             eventBus.$emit('v-hover', this.config.id)
+        },
+
+        onMouseSpace() {
+            eventBus.$emit('v-space', this.config.id)
         },
     },
 }
