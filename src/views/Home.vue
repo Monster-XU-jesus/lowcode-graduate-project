@@ -4,12 +4,11 @@
 
         <main>
             <!-- 左侧组件列表 -->
-            <div class="left">
-                <div class="cao">
-                    <ComponentList />
-                    <RealTimeComponentList />
-                </div>
-            </div>
+
+            <section class="left">
+                <ComponentList />
+                <RealTimeComponentList />
+            </section>
             <!-- 中间画布 -->
             <section class="center">
                 <div
@@ -142,6 +141,7 @@ export default {
     height: 100vh;
     background: #f5f5f5;
 
+
     main {
         height: calc(100% - 64px);
         position: relative;
@@ -153,6 +153,7 @@ export default {
             left: 0;
             top: 0;
             background-color: white;
+
 
             & > div {
                 overflow: auto;
@@ -176,6 +177,7 @@ export default {
                 inset 20px 20px 15px rgba(255, 255, 255, .7),
                 -15px -15px 35px rgba(255, 255, 255, .7),
                 inset -1px 1px 10px rgba(0, 0, 0, .5);
+
 
             .el-select {
                 width: 100%;
