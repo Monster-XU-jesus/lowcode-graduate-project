@@ -1,13 +1,14 @@
 <template>
     <div class="home">
         <Toolbar />
-
         <main>
             <!-- 左侧组件列表 -->
-            <section class="left">
-                <ComponentList />
-                <RealTimeComponentList />
-            </section>
+            <div class="left">
+                <div class="cao">
+                    <ComponentList />
+                    <RealTimeComponentList />
+                </div>
+            </div>
             <!-- 中间画布 -->
             <section class="center">
                 <div
@@ -56,7 +57,15 @@ import { changeComponentSizeWithScale } from '@/utils/changeComponentsSizeWithSc
 import { setDefaultcomponentData } from '@/store/snapshot'
 
 export default {
-    components: { Editor, ComponentList, AnimationList, EventList, Toolbar, RealTimeComponentList, CanvasAttr },
+    components: {
+        Editor,
+        ComponentList,
+        AnimationList,
+        EventList,
+        Toolbar,
+        RealTimeComponentList,
+        CanvasAttr,
+    },
     data() {
         return {
             activeName: 'attr',
@@ -94,7 +103,7 @@ export default {
                 component.style.left = e.clientX - rectInfo.x
                 component.id = generateID()
 
-                // 根据画面比例修改组件样式比例 https://github.com/woai3c/visual-drag-demo/issues/91
+                // 根据画面比例修改组件样式比例 
                 changeComponentSizeWithScale(component)
 
                 this.$store.commit('addComponent', { component })
@@ -130,11 +139,11 @@ export default {
 <style lang="scss">
 .home {
     height: 100vh;
-    background: #fff;
+    background: #f5f5f5;
 
-    main {
-        height: calc(100% - 64px);
-        position: relative;
+  main {
+    height: calc(100% - 64px);
+    position: relative;
 
         .left {
             position: absolute;
@@ -142,7 +151,10 @@ export default {
             width: 200px;
             left: 0;
             top: 0;
+            background-color: white;
 
+            & > div {
+                overflow: auto;
             & > div {
                 overflow: auto;
 
@@ -151,13 +163,25 @@ export default {
                 }
             }
         }
+                &:first-child {
+                    border-bottom: 1px solid #ddd;
+                }
+            }
+        }
 
         .right {
             position: absolute;
-            height: 100%;
+            height: 95%;
             width: 288px;
-            right: 0;
-            top: 0;
+            right: 10px;
+            top: 10px;
+            background-color: #f8f8f8;
+            border-radius: 35px;
+            box-shadow:
+                15px 15px 30px -10px rgba(0, 0, 0, .2),
+                inset 20px 20px 15px rgba(255, 255, 255, .7),
+                -15px -15px 35px rgba(255, 255, 255, .7),
+                inset -1px 1px 10px rgba(0, 0, 0, .5);
 
             .el-select {
                 width: 100%;
@@ -188,5 +212,4 @@ export default {
     .global-attr {
         padding: 10px;
     }
-}
 </style>

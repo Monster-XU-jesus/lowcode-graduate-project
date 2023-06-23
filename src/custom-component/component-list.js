@@ -54,19 +54,19 @@ const list = [
         component: 'VButton',
         label: '按钮',
         propValue: '按钮',
-        icon: 'button',
+        icon: 'anniu',  
         style: {
             width: 100,
             height: 34,
             borderWidth: 1,
             borderColor: '',
-            borderRadius: '',
+            borderRadius: '20',
             fontSize: '',
             fontWeight: 400,
             lineHeight: '',
             letterSpacing: 0,
             textAlign: '',
-            color: '',
+            color: 'pink',
             backgroundColor: '',
         },
     },
@@ -145,7 +145,7 @@ const list = [
     {
         component: 'SVGStar',
         label: '星形',
-        icon: 'kongwujiaoxing',
+        icon: 'wujiaoxingkong',
         propValue: '',
         style: {
             width: 80,
@@ -184,8 +184,8 @@ const list = [
         icon: 'biaoge',
         propValue: {
             data: [
-                ['表头1', '表头2', '表头3'],
-                ['内容1', '内容2', '内容3'],
+                ['姓名', '班级', '专业'],
+                ['徐子洋', '计科4班', '计算机科学与技术'],
             ],
             stripe: true,
             thBold: true,
@@ -246,6 +246,75 @@ const list = [
                     },
                 },
             },
+        },
+        style: {
+            width: 800,
+            height: 500,
+            borderRadius: '',
+        },
+    },
+    {
+        component: 'Video',
+        label: '视频',
+        icon: 'shipin', 
+        propValue: {
+            url: require('@/assets/video1.mp4'),
+            flip: {
+                horizontal: false,
+                vertical: false,
+            },
+        },
+        style: {
+            width: 500,
+            height: 300,
+            borderRadius: '',
+        },
+    },
+    {
+        component: 'VChartPie',
+        label: '饼状图',
+        // icon: 'mdi-chart-pie',
+        icon: 'bingzhuangtu',
+        propValue: {
+            chart: 'optionpie',
+            option: {
+                label: '圆环图',
+                disabled: false,
+                chart: 'optionpie',
+                title: {
+                    text: '圆环图',
+                    left: 'center',
+                    top: 'center',
+                },
+                series: [
+                    {
+                        type: 'pie',
+                        data: [
+                            {
+                                value: 335,
+                                name: 'A',
+                            },
+                            {
+                                value: 234,
+                                name: 'B',
+                            },
+                            {
+                                value: 1548,
+                                name: 'C',
+                            },
+                            {
+                                value: 111,
+                                name: 'D',
+                            },
+                            {
+                                value: 658,
+                                name: 'E',
+                            },
+                        ],
+                        radius: ['40%', '70%'],
+                    },
+                ],
+            }
         },
         style: {
             width: 800,

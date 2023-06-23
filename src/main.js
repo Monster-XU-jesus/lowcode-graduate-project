@@ -16,6 +16,7 @@ Vue.prototype.$echarts = echarts
 Vue.use(ElementUI, { size: 'small' })
 Vue.config.productionTip = false
 
+
 new Vue({
     el: '#app',
     router,

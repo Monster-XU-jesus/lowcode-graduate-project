@@ -1,7 +1,6 @@
 import store from './index'
 import { deepCopy } from '@/utils/utils'
 
-// 设置画布默认数据 https://github.com/woai3c/visual-drag-demo/issues/92
 let defaultcomponentData = []
 function getDefaultcomponentData() {
     return defaultcomponentData
@@ -21,6 +20,7 @@ export default {
             if (state.snapshotIndex >= 0) {
                 state.snapshotIndex--
                 const componentData = deepCopy(state.snapshotData[state.snapshotIndex]) || getDefaultcomponentData()
+                console.log(componentData)
                 if (state.curComponent) {
                     // 如果当前组件不在 componentData 中，则置空
                     const needClean = !componentData.find(component => state.curComponent.id === component.id)

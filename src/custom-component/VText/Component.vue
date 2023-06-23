@@ -85,7 +85,6 @@ export default {
     },
     methods: {
         onComponentClick() {
-            // 如果当前点击的组件 id 和 VText 不是同一个，需要设为不允许编辑 https://github.com/woai3c/visual-drag-demo/issues/90
             if (this.curComponent.id !== this.element.id) {
                 this.canEdit = false
             }
