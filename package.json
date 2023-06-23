@@ -45,6 +45,5 @@
     "stylelint-config-standard-scss": "^5.0.0",
     "vue-cli-plugin-electron-builder": "~2.1.1",
     "vue-template-compiler": "^2.6.14"
-  },
-  
+  }
 }
