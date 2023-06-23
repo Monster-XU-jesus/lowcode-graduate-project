@@ -1,4 +1,4 @@
-## 说明
+## 📚 说明
 
 这是一个为了记录和实现毕设的开发所创建的仓库，所以会集成多元的代码在其中，暂时还不具备学习价值
 
@@ -12,6 +12,16 @@ electron运行
 
 `npm run electron:serve`
 
+
+## 运行
+
+浏览器运行
+
+`npm run dev`
+
+electron运行
+
+`npm run electron:serve`
 
 ## 💼 任务
 

@@ -71,6 +71,9 @@ export default {
             console.log(e.target.dataset.index);
         },
     },
+    mounted() {
+        // console.log(typeof(componentList[0].component));
+    }
 }
 </script>
 
