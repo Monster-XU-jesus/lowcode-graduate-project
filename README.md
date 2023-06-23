@@ -52,11 +52,15 @@ electron运行
 目录：src/store/snapshot.js
 原理：通过数组去保留每一个操作的页面数据，这个数据是一个大数组，里面存储小数组放有页面组件的值
 
-    2. 实现的组件：ComponentList
-  
-2. 放到画布中呈现图形
->>>>>>> Stashed changes
->>>>>>>>> Temporary merge branch 2
+### 五、吸附
+目录：src/components/Editor/MarkLine.vue
+传值的组件：src/components/Editor/Shape.vue
+原理：当移动组件的时候，去判断与另外个组件的位置的差值（那是得与每一个组件都判断一遍吗）
+
+### 六、组件属性
+目录：src/custom-component/common/CommonAttr.vue
+原理：
+1. 根据v-model.number去区分使用的是数字输入框还是字符串
 
 ### 七、绑定事件
 目录：src/utils/events.js（记录了事件的方法）
