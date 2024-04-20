@@ -46,3 +46,15 @@ electron运行
 
 ### 七、绑定事件
 目录：src/utils/events.js（记录了事件的方法）
+
+## 展示效果图
+### 主页
+本图为一打开呈现的页面
+<img width="1380" alt="image" src="https://github.com/Monster-XU-jesus/lowcode-graduate-project/assets/71326725/173e54a6-734d-44bf-94e8-1bbad187d4be">
+
+### 控件展示图
+可以调节不同的层级，以及自定义组件的属性
+<img width="1386" alt="image" src="https://github.com/Monster-XU-jesus/lowcode-graduate-project/assets/71326725/7474607f-19fe-4376-b14d-cca9b17fe19a">
+
+功能点可以本地跑起来进行测试哈～
+
